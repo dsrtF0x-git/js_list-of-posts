@@ -27,7 +27,7 @@ async function creatingPostsLists() {
     const postComments = commentsList.filter(post => post.postId === posts.id);
 
     let dropDownContent = ``;
-    
+
     for (let i = 0; i < postComments.length; i++) {
       dropDownContent += `<h4 id="commentHead">${postComments[i].name}</h4>
                           <p id="commentText">${postComments[i].body}</p>`;
