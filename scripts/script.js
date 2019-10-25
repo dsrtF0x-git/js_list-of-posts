@@ -16,29 +16,27 @@ async function creatingPostsLists() {
   const basicClassList = ['ui', 'grid', 'centered'];
 
   
-  for (const key of postsList) {
+  for (const posts of postsList) {
     const divBox = document.createElement('div');
     divBox.classList.add(...basicClassList);
 
-    const postsTitle = key.title;
-    const postsBody = key.body;
-    const userName = usersList.find(user => user.id === key.userId).name;
+    const postsTitle = posts.title;
+    const postsBody = posts.body;
+    const userName = usersList.find(user => user.id === posts.userId).name;
 
-    const postCommentsName = commentsList.filter(post => post.postId === key.id);
-    const postCommentsBody = commentsList.filter(post => post.postId === key.id);
+    const postComments = commentsList.filter(post => post.postId === posts.id);
 
     let dropDownContent = ``;
-    for (let i = 0; i < postCommentsBody.length; i++) {
-      dropDownContent += `<h4 id="commentHead">${postCommentsName[i].name}</h4>
-                          <p id="commentText">${postCommentsBody[i].body}</p>`;
+    
+    for (let i = 0; i < postComments.length; i++) {
+      dropDownContent += `<h4 id="commentHead">${postComments[i].name}</h4>
+                          <p id="commentText">${postComments[i].body}</p>`;
     }
     
-
-
     
     divBox.innerHTML = `<div class="ui card five wide column">
                           <div class="image">
-                            <img src="https://source.unsplash.com/400x400/?man,girl">
+                            <img src="https://source.unsplash.com/${Math.round(Math.random() * (410 - 390) + 390)}x${Math.round(Math.random() * (410 - 390) + 390)}/?man,girl,blog,posts,notes,fashion">
                           </div>
                           <div class="content">
                             <div class="header">${postsTitle}</div>
